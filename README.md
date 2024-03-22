@@ -1,2 +1,2 @@
-# 0.0.0
+* Creation of develop branch for leeting "main" as production branch
 * Initial commit from local
