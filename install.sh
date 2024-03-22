@@ -6,15 +6,18 @@ CLUSTER_NAME="ruby-challenge-local"
 KIND_CLUSTER="kind-$CLUSTER_NAME"
 REPO_PATH=$(pwd)
 KIND_CONFIG_FILEPATH="$REPO_PATH/kind-config.yaml"
+KIND_CONFIG_TEMPLATE_FILEPATH="$REPO_PATH/kind-config.yaml.default"
 NAMESPACE="local-challenge"
 HELM_RELEASE="challenge-release"
 
-echo "CLUSTER_NAME=$CLUSTER_NAME"
-echo "KIND_CLUSTER=$KIND_CLUSTER"
-echo "REPO_PATH=$REPO_PATH"
-echo "KIND_CONFIG_FILEPATH=$KIND_CONFIG_FILEPATH"
-echo "NAMESPACE=$NAMESPACE"
-echo "HELM_RELEASE=$HELM_RELEASE"
+# Creation of new configuration file if you don't already have one
+if [ -f "$KIND_CONFIG_FILEPATH" ]; then
+  echo "Kind configuration file already exists"
+else
+  cp "$KIND_CONFIG_TEMPLATE_FILEPATH" "$KIND_CONFIG_FILEPATH"
+  sed -i -e "s|REPO_PATH|$(pwd)|g" "$KIND_CONFIG_FILEPATH"
+  echo "Kind configuration file created"
+fi
 
 # If the cluster is already created
 if kubectl config get-contexts | grep -q $KIND_CLUSTER; then

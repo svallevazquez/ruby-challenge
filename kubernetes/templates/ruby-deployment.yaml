@@ -24,16 +24,19 @@ spec:
         - name: {{ .Values.deployments.appName }}
           image: {{ .Values.images.ruby }}
           imagePullPolicy: IfNotPresent
+          workingDir: {{ .Values.deployments.workingDirectory }}
           command: ['/bin/sh', '-c']
           args:
             # ---- FOR DEBUGGING (remember to run manually "BASED=SVQ bundle exec ruby main.rb input.txt" in the prop terminal) ---
             - >-
-                cd ruby-challenge &&
+                gem install bundler:2.5.7 &&
+                bundle &&
                 while :; do sleep 10; done
             # ----------------------------------------------------------------
             # ---- NORMAL BEHAVIOR ----
             # - >-
-            #     cd ruby-challenge
+            #     gem install bundler:2.5.7 &&
+            #     bundle &&
             #     BASED=SVQ bundle exec ruby main.rb input.txt
             # ----------------------------------------------------------------
           resources: {}
