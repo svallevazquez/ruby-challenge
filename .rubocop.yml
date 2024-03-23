@@ -3,7 +3,7 @@ AllCops:
   TargetRubyVersion: 3.3.0
 
 Metrics/BlockLength:
-  IgnoredMethods: ['describe', 'context', 'shared_examples_for']
+  IgnoredMethods: ['describe', 'context', 'shared_context', 'shared_examples_for']
 
 # Offense count: 5
 # Configuration parameters: IgnoredMethods.

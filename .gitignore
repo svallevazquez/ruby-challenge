@@ -1,2 +1,3 @@
+.byebug_history
 .rspec_status
-./kind-config.yaml
+kind-config.yaml

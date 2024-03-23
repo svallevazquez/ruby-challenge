@@ -20,6 +20,9 @@ module RubyChallenge
       def check_errors
         super
         @errors << "destination is not valid" if @destination.nil? || @destination.length != 3
+        return if @origin.nil? || @destination.nil?
+
+        @errors << "destination cannot be the same as origin" if @origin == @destination
       end
     end
   end
