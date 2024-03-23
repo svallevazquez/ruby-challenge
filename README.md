@@ -14,11 +14,13 @@ You can check `install.sh` script for more information.
 # Planning of the challenge
 We will start trying to do TDD and creating an structure for the different elements, like:
 * SEGMENT class (**PARENT CLASS**)-> for each entry or booking that we have. Which contains the next info:
-  * Booking type -> Like hotel, train or flight
   * Origin
   * Destination
   * Upcoming time
   * Departure time
+
+**The intention is creating another classes like Segments::Flight, Segments::Hotel and Segments::Train. As Train and Flight would be almost the same, we will create another class called Segments::Transport for being the parent class of these last two.**
+
 * TRIP class -> that will contain all segments related to the same trip
   * Origin
   * Starting time
