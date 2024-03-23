@@ -1,3 +1,4 @@
+* Creating new main.rb, first successfull test and fixing rubocop errors
 * Planning for the challenge
 * Fixing and improving local deployment
 * Creating the project as a gem of Rails
