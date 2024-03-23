@@ -1,3 +1,4 @@
+* Adding GitHub CI with linter step and tests step
 * Rubocop fixes
 * Change default settings for rubocop
 * New Segments::Base model class with Rspec
