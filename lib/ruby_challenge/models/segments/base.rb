@@ -23,6 +23,7 @@ module RubyChallenge
 
       def check_errors
         @errors << "origin is not valid" if @origin.nil? || @origin.length != 3
+        check_errors_for_datetimes
       end
 
       private
