@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require_relative "lib/ruby_challenge/version"
+require "date"
+Dir.glob("#{__dir__}/lib/ruby_challenge/**/*.rb").each { |f| require f }
 
 Gem::Specification.new do |spec|
   spec.name = "ruby-challenge"

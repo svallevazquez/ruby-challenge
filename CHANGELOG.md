@@ -1,3 +1,4 @@
+* New Segments::Base model class with Rspec
 * Creating new main.rb, first successfull test and fixing rubocop errors
 * Planning for the challenge
 * Fixing and improving local deployment

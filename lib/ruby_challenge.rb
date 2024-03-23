@@ -4,5 +4,4 @@ require_relative "version"
 
 module RubyChallenge
   class Error < StandardError; end
-  # Your code goes here...
 end
