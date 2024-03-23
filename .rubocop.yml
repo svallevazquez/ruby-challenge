@@ -1,5 +1,32 @@
 AllCops:
-  TargetRubyVersion: 3.0
+  NewCops: enable
+  TargetRubyVersion: 3.3.0
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context', 'shared_examples_for']
+
+# Offense count: 5
+# Configuration parameters: IgnoredMethods.
+Metrics/CyclomaticComplexity:
+  Max: 11
+
+# Offense count: 12
+# Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
+Metrics/MethodLength:
+  Max: 16
+
+# Offense count: 1
+# Configuration parameters: CountComments, CountAsOne.
+Metrics/ModuleLength:
+  Max: 136
+
+# Offense count: 4
+# Configuration parameters: IgnoredMethods.
+Metrics/PerceivedComplexity:
+  Max: 12
+
+Style/Documentation:
+  Enabled: false
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes

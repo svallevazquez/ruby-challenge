@@ -1,3 +1,4 @@
+* Change default settings for rubocop
 * New Segments::Base model class with Rspec
 * Creating new main.rb, first successfull test and fixing rubocop errors
 * Planning for the challenge
