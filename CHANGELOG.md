@@ -1,3 +1,4 @@
+* Improving RSpecs with shared examples
 * New Segments::Transport class with RSpec
 * Adding GitHub CI with linter step and tests step
 * Rubocop fixes
