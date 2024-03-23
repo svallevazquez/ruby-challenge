@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe RubyChallenge::Segments::Base do
-  let(:origin) { 'BCN' }
+  let(:origin) { "BCN" }
   let(:departure) { DateTime.now }
   let(:arrival) { DateTime.now + Rational(3, 24) }
 
@@ -26,7 +26,7 @@ RSpec.describe RubyChallenge::Segments::Base do
 
   context "wrong values" do
     shared_examples_for "not valid" do |not_valid_message|
-      it "#{not_valid_message}" do
+      it not_valid_message do
         expect(subject.valid?).to be_falsey
       end
     end

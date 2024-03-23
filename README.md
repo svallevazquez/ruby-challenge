@@ -2,6 +2,9 @@ As the intention of this test is doing it with Ruby and not relying in a databas
 
 But as I love the new technologies and as a way of preparing a project for production environment, this project will use Kubernetes and Helm.
 
+# Little Warnings
+* This gem contains a models folder but none ot the classes there are ActiveRecord ones, neither related to storing into database (as this gem is not interanting with any database or storing system)
+
 # Local deployment
 I will create with Kind command for local a new cluster and setting a configuration for creating a volume and use this project, so in this project will
 be an script for creating and updating the release of this project in local.

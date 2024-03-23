@@ -23,9 +23,16 @@ module RubyChallenge
 
       def check_errors
         @errors << "origin is not valid" if @origin.nil? || @origin.length != 3
+      end
+
+      private
+
+      def check_errors_for_datetimes
         @errors << "departure is not valid" if @departure.nil? || !@departure.is_a?(DateTime)
         @errors << "arrival is not valid" if @arrival.nil? || !@arrival.is_a?(DateTime)
-        @errors << "arrival cannot be lesser than departure" if @arrival.is_a?(DateTime) && @departure.is_a?(DateTime) && @arrival < @departure
+        return if @arrival.is_a?(DateTime) && @departure.is_a?(DateTime) && @arrival >= @departure
+
+        @errors << "arrival cannot be lesser than departure"
       end
     end
   end
