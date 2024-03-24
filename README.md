@@ -22,8 +22,9 @@ We will start trying to do TDD and creating an structure for the different eleme
 **The intention is creating another classes like Segments::Flight, Segments::Hotel and Segments::Train. As Train and Flight would be almost the same, we will create another class called Segments::Transport for being the parent class of these last two.**
 
 * TRIP class -> that will contain all segments related to the same trip
-  * Origin
-  * Starting time
+  * Segments associated to the trip
+  * Beginning of the journey
+  * Destination
 * SVQ Parser class -> it will be a service for parsing to the other classes
 * SVQ Validator class -> another service for validating the format of SVQ format
 * Arguments Validator class -> service for validating the arguments and env variable with their values

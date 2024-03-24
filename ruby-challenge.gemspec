@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "byebug"
 require_relative "lib/ruby_challenge/models/segments/base"
 require_relative "lib/ruby_challenge/models/segments/transport"
 Dir.glob("#{__dir__}/lib/ruby_challenge/**/*.rb").each { |f| require f }
