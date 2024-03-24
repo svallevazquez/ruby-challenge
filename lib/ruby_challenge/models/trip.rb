@@ -26,7 +26,7 @@ module RubyChallenge
       hotel = @segments.find { |segment| segment.is_a?(RubyChallenge::Segments::Hotel) }
       return hotel.origin if hotel
 
-      @segments.map(&:destination).unique.last
+      @segments.map(&:destination).uniq.last
     end
   end
 end

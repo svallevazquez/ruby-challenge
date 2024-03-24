@@ -1,3 +1,5 @@
+# 1.0.0
+* Finishing main.rb file and test
 * New SvqParser service class and test
 * New SegmentParsers service classes (Transport, Flight and Train) and tests
 * New SegmentParsers service classes (Base and Hotel) and tests
