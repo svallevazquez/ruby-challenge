@@ -3,6 +3,7 @@
 require_relative "lib/ruby_challenge/models/segments/base"
 require_relative "lib/ruby_challenge/models/segments/transport"
 require_relative "lib/ruby_challenge/services/segment_parsers/base"
+require_relative "lib/ruby_challenge/services/segment_parsers/transport"
 Dir.glob("#{__dir__}/lib/ruby_challenge/**/*.rb").each { |f| require f }
 
 Gem::Specification.new do |spec|
