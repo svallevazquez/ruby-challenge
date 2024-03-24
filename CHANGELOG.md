@@ -1,3 +1,4 @@
+* More Segments classes and RSpecs: Train, Flight and Hotel
 * Fix specs and refactoring
 * Remove date library
 * Improving RSpecs with shared examples

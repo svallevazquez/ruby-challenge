@@ -16,8 +16,8 @@ We will start trying to do TDD and creating an structure for the different eleme
 * SEGMENT class (**PARENT CLASS**)-> for each entry or booking that we have. Which contains the next info:
   * Origin
   * Destination
-  * Upcoming time
-  * Departure time
+  * From Time
+  * To Time
 
 **The intention is creating another classes like Segments::Flight, Segments::Hotel and Segments::Train. As Train and Flight would be almost the same, we will create another class called Segments::Transport for being the parent class of these last two.**
 

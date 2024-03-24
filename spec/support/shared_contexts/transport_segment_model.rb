@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 shared_context "transport segment model" do
-  let(:custom_departure) { Time.new(2024, 2, 1, 12, 0, 0) }
+  let(:custom_from_time) { Time.new(2024, 2, 1, 12, 0, 0) }
   let(:origin) { "BCN" }
   let(:destination) { "MAD" }
-  let(:departure) { custom_departure }
-  let(:arrival) { custom_departure + (3 * 3600) }
+  let(:from_time) { custom_from_time }
+  let(:to_time) { custom_from_time + (3 * 3600) }
 
-  subject { described_class.new(origin:, destination:, departure:, arrival:) }
+  subject { described_class.new(origin:, destination:, from_time:, to_time:) }
 
   context "all successful" do
     describe "checking errors" do
@@ -28,21 +28,7 @@ shared_context "transport segment model" do
   end
 
   context "wrong values" do
-    describe "origin field" do
-      it_behaves_like "not valid model", test_description: "cannot be nil", error: "origin is not valid" do
-        let(:origin) { nil }
-      end
-
-      it_behaves_like "not valid model", test_description: "cannot be lesser than 3 letters",
-                                         error: "origin is not valid" do
-        let(:origin) { "BG" }
-      end
-
-      it_behaves_like "not valid model", test_description: "cannot be upper than 3 letters",
-                                         error: "origin is not valid" do
-        let(:origin) { "BCNG" }
-      end
-    end
+    include_context "segment default wrong values"
 
     describe "destination field" do
       it_behaves_like "not valid model", test_description: "cannot be nil", error: "destination is not valid" do
@@ -62,31 +48,6 @@ shared_context "transport segment model" do
       it_behaves_like "not valid model", test_description: "cannot be the same as origin",
                                          error: "destination cannot be the same as origin" do
         let(:destination) { "BCN" }
-      end
-    end
-
-    describe "departure field" do
-      it_behaves_like "not valid model", test_description: "cannot be nil", error: "departure is not valid" do
-        let(:departure) { nil }
-      end
-
-      it_behaves_like "not valid model", test_description: "only can be Time", error: "departure is not valid" do
-        let(:departure) { Time.now.to_s }
-      end
-    end
-
-    describe "arrival field" do
-      it_behaves_like "not valid model", test_description: "cannot be nil", error: "arrival is not valid" do
-        let(:arrival) { nil }
-      end
-
-      it_behaves_like "not valid model", test_description: "only can be Time", error: "arrival is not valid" do
-        let(:arrival) { Time.now.to_s }
-      end
-
-      it_behaves_like "not valid model", test_description: "cannot be lesser than departure",
-                                         error: "arrival cannot be lesser than departure" do
-        let(:arrival) { departure - (3 * 3600) }
       end
     end
   end

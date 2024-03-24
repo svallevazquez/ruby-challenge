@@ -5,16 +5,16 @@ module RubyChallenge
     class Transport < Base
       attr_reader :destination
 
-      def initialize(origin:, departure:, arrival:, destination:)
-        super(origin:, departure:, arrival:)
+      def initialize(origin:, destination:, from_time:, to_time:)
+        super(origin:, from_time:, to_time:)
         @destination = destination
       end
 
       def to_s
-        departure_text = @departure.strftime("%Y-%m-%d %H:%M")
-        arrival_text = @arrival.strftime("%H:%M")
+        from_time_text = @from_time.strftime("%Y-%m-%d %H:%M")
+        to_time_text = @to_time.strftime("%H:%M")
         parsed_class = self.class.name.split("::").last
-        "#{parsed_class} from #{@origin} to #{@destination} at #{departure_text} to #{arrival_text}"
+        "#{parsed_class} from #{@origin} to #{@destination} at #{from_time_text} to #{to_time_text}"
       end
 
       def check_errors
