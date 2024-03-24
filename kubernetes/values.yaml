@@ -1,0 +1,14 @@
+deployments:
+  appName: ruby-challenge
+  appVolumeMounts:
+    - name: ruby-challenge-volume
+      mountPath: /ruby-challenge
+  appVolumes:
+    - name: ruby-challenge-volume
+      hostPath:
+        path: /ruby-challenge
+  workingDirectory: /ruby-challenge
+general:
+  namespace: local-challenge
+images:
+  ruby: ruby:3.3.0
