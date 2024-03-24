@@ -31,8 +31,8 @@ module RubyChallenge
         parsed_klass = self.class.name.split("::").last
         Object.const_get("RubyChallenge::Segments::#{parsed_klass}").new(
           origin: field_value(:origin),
-          from_time: field_value(:from_time),
-          to_time: field_value(:to_time)
+          from_time: field_value(:from_time, clock_time: "23:59"),
+          to_time: field_value(:to_time, clock_time: "00:00")
         )
       end
 
@@ -52,11 +52,11 @@ module RubyChallenge
         end
       end
 
-      def parse_time(position, _extra_config)
+      def parse_time(position, extra_config)
         time_text = if position.is_a?(Array)
                       position.map { @words[_1] }.join(" ")
                     else
-                      "#{@words[position]} 00:00"
+                      "#{@words[position]} #{extra_config[:clock_time]}"
                     end
         convert_text_to_time(time_text)
       end

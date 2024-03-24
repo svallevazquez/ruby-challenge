@@ -1,22 +1,19 @@
 # frozen_string_literal: true
 
 RSpec.describe RubyChallenge::Trip do
-  let(:begginning_of_the_trip) { Time.new(2024, 0o3, 0o7, 8, 0, 0) }
   let(:segments) do
     [
-      RubyChallenge::Segments::Flight.new(origin: "MAD", destination: "BCN", from_time: begginning_of_the_trip,
-                                          to_time: Time.new(2024, 0o3, 0o7, 9, 30, 0)),
-      RubyChallenge::Segments::Hotel.new(origin: "BCN", from_time: Time.new(2024, 0o3, 0o7, 17, 0, 0),
-                                         to_time: Time.new(2024, 0o3, 10, 12, 0, 0)),
+      RubyChallenge::Segments::Flight.new(origin: "MAD", destination: "BCN", from_time: Time.new(2024, 3, 7, 8, 0, 0),
+                                          to_time: Time.new(2024, 3, 7, 9, 30, 0)),
+      RubyChallenge::Segments::Hotel.new(origin: "BCN", from_time: Time.new(2024, 3, 7, 23, 59, 0),
+                                         to_time: Time.new(2024, 3, 10, 0, 0, 0)),
       RubyChallenge::Segments::Train.new(origin: "BCN", destination: "MAD",
-                                         from_time: Time.new(2024, 0o3, 10, 20, 30, 0),
-                                         to_time: Time.new(2024, 0o3, 10, 22, 10, 0))
+                                         from_time: Time.new(2024, 3, 10, 20, 30, 0),
+                                         to_time: Time.new(2024, 3, 10, 22, 10, 0))
     ]
   end
-  let(:beginning) { begginning_of_the_trip }
-  let(:destination) { "BCN" }
 
-  subject { described_class.new(segments:, beginning:, destination:) }
+  subject { described_class.new(segments:) }
 
   context "all successful" do
     let(:expected_result) do
@@ -54,40 +51,14 @@ RSpec.describe RubyChallenge::Trip do
                                          error: "segments is not valid" do
         let(:segments) do
           RubyChallenge::Segments::Flight.new(origin: "MAD", destination: "BCN",
-                                              from_time: begginning_of_the_trip,
-                                              to_time: Time.new(2024, 0o3, 0o7, 9, 30, 0))
+                                              from_time: Time.new(2024, 3, 7, 8, 0, 0),
+                                              to_time: Time.new(2024, 3, 7, 9, 30, 0))
         end
       end
 
       it_behaves_like "not valid model", test_description: "cannot be empty",
                                          error: "segments is not valid" do
         let(:segments) { [] }
-      end
-    end
-
-    describe "destination field" do
-      it_behaves_like "not valid model", test_description: "cannot be nil", error: "destination is not valid" do
-        let(:destination) { nil }
-      end
-
-      it_behaves_like "not valid model", test_description: "cannot be lesser than 3 letters",
-                                         error: "destination is not valid" do
-        let(:destination) { "BG" }
-      end
-
-      it_behaves_like "not valid model", test_description: "cannot be upper than 3 letters",
-                                         error: "destination is not valid" do
-        let(:destination) { "BCNG" }
-      end
-    end
-
-    describe "beginning field" do
-      it_behaves_like "not valid model", test_description: "cannot be nil", error: "beginning is not valid" do
-        let(:beginning) { nil }
-      end
-
-      it_behaves_like "not valid model", test_description: "only can be Time", error: "beginning is not valid" do
-        let(:beginning) { Time.now.to_s }
       end
     end
   end

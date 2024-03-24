@@ -5,7 +5,7 @@ shared_context "segment parsers default tests" do
   let(:words) { %w[BCN 2023-01-05 2023-01-10] }
   let(:expected_result) do
     Object.const_get("RubyChallenge::Segments::#{current_class}")
-          .new(origin: "BCN", from_time: Time.new(2023, 1, 5), to_time: Time.new(2023, 1, 10))
+          .new(origin: "BCN", from_time: Time.new(2023, 1, 5, 23, 59), to_time: Time.new(2023, 1, 10))
   end
 
   subject { described_class.new(words:).call }

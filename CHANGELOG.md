@@ -1,3 +1,4 @@
+* New SvqParser service class and test
 * New SegmentParsers service classes (Transport, Flight and Train) and tests
 * New SegmentParsers service classes (Base and Hotel) and tests
 * Creating patch for SvqParser and test

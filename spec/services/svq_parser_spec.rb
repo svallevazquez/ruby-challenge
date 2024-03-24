@@ -10,10 +10,6 @@ RSpec.describe RubyChallenge::SvqParser do
 
     it "returning the trips" do
       trips_for_demo.each_with_index do |trip, trip_index|
-        expect(subject[trip_index]).to have_attributes(
-          beginning: trip.beginning,
-          destination: trip.destination
-        )
         trip.segments.each_with_index do |segment, segment_index|
           expect(subject[trip_index].segments[segment_index]).to have_attributes(
             class: segment.class,

@@ -2,26 +2,31 @@
 
 module RubyChallenge
   class Trip
-    attr_reader :segments, :beginning, :destination, :errors
+    attr_reader :segments, :errors
 
-    def initialize(segments:, beginning:, destination:)
+    def initialize(segments:)
       @segments = segments
-      @beginning = beginning
-      @destination = destination
       @errors = []
     end
 
     def valid?
       @errors << "segments is not valid" if !@segments.is_a?(Array) || @segments.empty?
-      @errors << "beginning is not valid" if @beginning.nil? || !@beginning.is_a?(Time)
-      @errors << "destination is not valid" if @destination.nil? || @destination.length != 3
       @errors.empty?
     end
 
     def to_s
-      result = "TRIP to #{destination}\n"
+      result = "TRIP to #{find_destination}\n"
       segments.each { |segment| result += "#{segment}\n" }
       result
+    end
+
+    private
+
+    def find_destination
+      hotel = @segments.find { |segment| segment.is_a?(RubyChallenge::Segments::Hotel) }
+      return hotel.origin if hotel
+
+      @segments.map(&:destination).unique.last
     end
   end
 end
