@@ -1,3 +1,4 @@
+* New SegmentParsers service classes (Base and Hotel) and tests
 * Creating patch for SvqParser and test
 * New Trip class with RSpec
 * More Segments classes and RSpecs: Train, Flight and Hotel
