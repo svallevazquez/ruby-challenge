@@ -10,6 +10,28 @@ KIND_CONFIG_TEMPLATE_FILEPATH="$REPO_PATH/kind-config.yaml.default"
 NAMESPACE="local-challenge"
 HELM_RELEASE="challenge-release"
 
+if ! command -v brew
+then
+  echo "You need to install brew command first"
+  exit 1
+fi
+
+if command -v kind
+then
+  echo "KIND command already installed"
+else
+  echo "Installing kind for Kubernetes in local"
+  brew install kind
+fi
+
+if command -v k9s
+then
+  echo "k9s already installed"
+else
+  echo "Installing k9s for Kubernetes interactive dashboard"
+  brew install derailed/k9s/k9s
+fi
+
 # Creation of new configuration file if you don't already have one
 if [ -f "$KIND_CONFIG_FILEPATH" ]; then
   echo "Kind configuration file already exists"
