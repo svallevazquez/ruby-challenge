@@ -1,3 +1,8 @@
+# 1.0.1
+* Improving documentation
+* Creating Dockerfile for alternative to local environment
+* Improving local script
+
 # 1.0.0
 * Finishing main.rb file and test
 * New SvqParser service class and test
